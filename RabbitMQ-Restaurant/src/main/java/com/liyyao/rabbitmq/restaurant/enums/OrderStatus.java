@@ -1,4 +1,4 @@
-package com.liyyao.rabbitmq.order.enums;
+package com.liyyao.rabbitmq.restaurant.enums;
 
 /**
  * 订单状态枚举类

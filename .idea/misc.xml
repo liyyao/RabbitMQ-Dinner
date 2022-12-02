@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/RabbitMQ-Order/pom.xml" />
+        <option value="$PROJECT_DIR$/RabbitMQ-Restaurant/pom.xml" />
       </list>
     </option>
   </component>

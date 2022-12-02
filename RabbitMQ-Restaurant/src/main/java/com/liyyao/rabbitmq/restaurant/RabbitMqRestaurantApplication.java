@@ -1,15 +1,15 @@
-package com.liyyao.rabbitmq.order;
+package com.liyyao.rabbitmq.restaurant;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@MapperScan(basePackages = "com.liyyao.rabbitmq")
+@MapperScan
 @SpringBootApplication
-public class RabbitMqOrderApplication {
+public class RabbitMqRestaurantApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RabbitMqOrderApplication.class, args);
+        SpringApplication.run(RabbitMqRestaurantApplication.class, args);
     }
 
 }

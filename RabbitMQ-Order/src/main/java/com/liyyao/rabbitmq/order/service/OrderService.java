@@ -38,7 +38,7 @@ public class OrderService {
         orderDetail.setAddress(orderCreateVo.getAddress());
         orderDetail.setAccountId(orderCreateVo.getAccountId());
         orderDetail.setProductId(orderDetail.getProductId());
-        orderDetail.setStatus(OrderStatus.ORDER_CREATEING);
+        orderDetail.setStatus(OrderStatus.ORDER_CREATING);
         orderDetail.setDate(LocalDateTime.now());
         orderDetail.setId(UUID.randomUUID().toString());
         orderDetailDao.save(orderDetail);
