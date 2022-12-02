@@ -1,0 +1,29 @@
+server:
+  port:8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://43.142.250.57:3306/rabbitmq_dinner?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+  rabbitmq:
+    port: 5672
+    virtual-host: dinner
+    host: 43.142.250.57
+    username: guest
+    password: guest
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 1
+        max-concurrency: 5
+        prefetch: 1
+
+#Mybatis
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
