@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/RabbitMQ-Order/pom.xml" />
         <option value="$PROJECT_DIR$/RabbitMQ-Restaurant/pom.xml" />
         <option value="$PROJECT_DIR$/RabbitMQ-Deliveryman/pom.xml" />
+        <option value="$PROJECT_DIR$/RabbitMQ-Settlement/pom.xml" />
       </list>
     </option>
   </component>

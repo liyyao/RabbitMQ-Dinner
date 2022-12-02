@@ -2,7 +2,6 @@ package com.liyyao.rabbitmq.deliveryman.dao;
 
 import com.liyyao.rabbitmq.deliveryman.entity.po.Deliveryman;
 import com.liyyao.rabbitmq.deliveryman.enums.DeliverymanStatus;
-import com.liyyao.rabbitmq.restaurant.entity.po.Product;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
