@@ -9,6 +9,8 @@
         <option value="$PROJECT_DIR$/RabbitMQ-Restaurant/pom.xml" />
         <option value="$PROJECT_DIR$/RabbitMQ-Deliveryman/pom.xml" />
         <option value="$PROJECT_DIR$/RabbitMQ-Settlement/pom.xml" />
+        <option value="$PROJECT_DIR$/RabbitMQ-Reward/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringMVC-Test/pom.xml" />
       </list>
     </option>
   </component>

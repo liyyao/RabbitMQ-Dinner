@@ -11,6 +11,7 @@ import com.liyyao.rabbitmq.restaurant.enums.OrderStatus;
 import com.liyyao.rabbitmq.restaurant.enums.ProductStatus;
 import com.liyyao.rabbitmq.restaurant.enums.RestaurantStatus;
 import com.rabbitmq.client.Channel;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Correlation;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
@@ -28,6 +29,7 @@ import java.nio.charset.StandardCharsets;
  * 餐厅监听器
  */
 @Component
+@Slf4j
 public class RestaurantConsumer {
 
     @Autowired
@@ -47,6 +49,11 @@ public class RestaurantConsumer {
         String bodyStr = new String(message.getBody());
         OrderMessageDTO orderMessageDTO = JSON.parseObject(bodyStr, OrderMessageDTO.class);
         Product product = productDao.selectProduct(orderMessageDTO.getProductId());     //获取数据库中的商品数据
+        if (product == null) {
+            log.warn("there isn't a product by id :" + orderMessageDTO.getProductId());
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   //手动消息应答
+            return;
+        }
         Restaurant restaurant = restaurantDao.selectRestaurant(product.getRestaurantId());//通过商品获取对应的餐厅数据
 
         //判断当前店家是否已经打烊且订单对应商品库存是否充足，更新订单状态
@@ -72,5 +79,6 @@ public class RestaurantConsumer {
         rabbitTemplate.convertAndSend(RabbitConfig.RESTAURANT_EXCHANGE, "key.order", sendMsg, correlationData);
 
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);   //手动消息应答
+        log.info("餐厅收到消息，已确认...");
     }
 }

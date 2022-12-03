@@ -29,7 +29,7 @@ import java.util.UUID;
  */
 @Component
 @Slf4j
-public class RestaurantConsumer {
+public class SettlementConsumer {
 
     @Autowired
     private SettlementDao settlementDao;

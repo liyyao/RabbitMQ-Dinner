@@ -16,7 +16,7 @@ public interface OrderDetailDao {
             "WHERE id=#{id}")
     void update(OrderDetail orderDetail);
 
-    @Select("SELECT id, status, address, account_id, product_id, deliveryman_id, settlement_id, reward_id, price, date " +
+    @Select("SELECT id, status, address, account_id as AccountId, product_id as productId, deliveryman_id as deliverymanId, settlement_id as settlementId, reward_id as rewardId, price, date " +
             "FROM order_detail " +
             "WHERE id=#{id}")
     OrderDetail selectOrder(String id);

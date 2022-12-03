@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 订单落库实体类
@@ -24,5 +24,5 @@ public class OrderDetail {
     private String settlementId;        //结算ID
     private String rewardId;            //积分结算ID
     private BigDecimal price;           //价格
-    private LocalDateTime date;         //时间
+    private Date date;         //时间
 }

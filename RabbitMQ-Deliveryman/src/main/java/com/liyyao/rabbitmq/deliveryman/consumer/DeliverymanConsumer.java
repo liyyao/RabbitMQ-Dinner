@@ -23,15 +23,13 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
-
 
 /**
  * 餐厅监听器
  */
 @Component
 @Slf4j
-public class RestaurantConsumer {
+public class DeliverymanConsumer {
 
     @Autowired
     private DeliverymanDao deliverymanDao;

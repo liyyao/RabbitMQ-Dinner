@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -37,9 +38,9 @@ public class OrderService {
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.setAddress(orderCreateVo.getAddress());
         orderDetail.setAccountId(orderCreateVo.getAccountId());
-        orderDetail.setProductId(orderDetail.getProductId());
+        orderDetail.setProductId(orderCreateVo.getProductId());
         orderDetail.setStatus(OrderStatus.ORDER_CREATING);
-        orderDetail.setDate(LocalDateTime.now());
+        orderDetail.setDate(new Date());
         orderDetail.setId(UUID.randomUUID().toString());
         orderDetailDao.save(orderDetail);
 
