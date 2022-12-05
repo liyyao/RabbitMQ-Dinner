@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.liyyao.rabbitmq</groupId>
-    <artifactId>RabbitMQ-Order</artifactId>
+    <artifactId>RabbitMQ-TransMessage</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>RabbitMQ-Order</name>
-    <description>RabbitMQ-Order</description>
+    <name>RabbitMQ-TransMessage</name>
+    <description>RabbitMQ-TransMessage</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -70,11 +70,6 @@
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.liyyao.rabbitmq</groupId>
-            <artifactId>RabbitMQ-TransMessage</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

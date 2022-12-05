@@ -7,6 +7,7 @@ import com.liyyao.rabbitmq.order.entity.dto.OrderMessageDTO;
 import com.liyyao.rabbitmq.order.entity.po.OrderDetail;
 import com.liyyao.rabbitmq.order.entity.vo.OrderCreateVo;
 import com.liyyao.rabbitmq.order.enums.OrderStatus;
+import com.liyyao.rabbitmq.transmessage.sender.TransMessageSender;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.core.ReturnedMessage;
@@ -29,6 +30,8 @@ public class OrderService {
     private OrderDetailDao orderDetailDao;
     @Autowired
     private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private TransMessageSender messageSender;
 
     /**
      * 创建订单
@@ -49,7 +52,7 @@ public class OrderService {
         messageDTO.setProductId(orderDetail.getProductId());
         messageDTO.setAccountId(orderDetail.getAccountId());
 
-        String json = JSON.toJSONString(messageDTO);
+        /*String json = JSON.toJSONString(messageDTO);
         MessageProperties properties = new MessageProperties();
         properties.setContentType(MessageProperties.CONTENT_TYPE_JSON);
         Message message = new Message(json.getBytes(StandardCharsets.UTF_8), properties);   //指定为JSON格式消息
@@ -58,6 +61,13 @@ public class OrderService {
         ReturnedMessage returnedMessage = new ReturnedMessage(message, 100, "用户创建订单消息", RabbitConfig.RESTAURANT_EXCHANGE, RabbitConfig.ORDER_ROUTING_KEY);
         correlationData.setReturned(returnedMessage);   //设置不可路由捕获的消息
 
-        rabbitTemplate.convertAndSend(RabbitConfig.RESTAURANT_EXCHANGE, "key.restaurant", message, correlationData);
+        rabbitTemplate.convertAndSend(RabbitConfig.RESTAURANT_EXCHANGE, "key.restaurant", message, correlationData);*/
+
+        String json = JSON.toJSONString(messageDTO);
+        MessageProperties properties = new MessageProperties();
+        properties.setContentType(MessageProperties.CONTENT_TYPE_JSON);
+        properties.setMessageId(messageDTO.getOrderId());
+        Message message = new Message(json.getBytes(StandardCharsets.UTF_8), properties);   //指定为JSON格式消息
+        messageSender.send("orderService", RabbitConfig.RESTAURANT_EXCHANGE + "s", "key.restaurant", message);
     }
 }

@@ -9,12 +9,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="RabbitMQ-Deliveryman" />
         <module name="RabbitMQ-Order" />
-        <module name="SpringMVC-Test" />
+        <module name="RabbitMQ-TransMessage" />
         <module name="RabbitMQ-Restaurant" />
         <module name="RabbitMQ-Settlement" />
         <module name="RabbitMQ-Reward" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SpringMVC-Test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -23,6 +26,7 @@
       <module name="RabbitMQ-Restaurant" options="-parameters" />
       <module name="RabbitMQ-Reward" options="-parameters" />
       <module name="RabbitMQ-Settlement" options="-parameters" />
+      <module name="RabbitMQ-TransMessage" options="-parameters" />
       <module name="SpringMVC-Test" options="-parameters" />
     </option>
   </component>

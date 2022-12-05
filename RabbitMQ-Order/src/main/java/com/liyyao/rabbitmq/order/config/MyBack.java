@@ -1,5 +1,6 @@
 package com.liyyao.rabbitmq.order.config;
 
+import com.liyyao.rabbitmq.transmessage.service.TransMessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.ReturnedMessage;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -22,6 +23,8 @@ public class MyBack implements RabbitTemplate.ConfirmCallback, RabbitTemplate.Re
     private RabbitTemplate rabbitTemplate;
     @Autowired
     private ConnectionFactory connectionFactory;
+    @Autowired
+    TransMessageService transMessageService;
 
     /**
      * 将实现类注入
@@ -37,6 +40,11 @@ public class MyBack implements RabbitTemplate.ConfirmCallback, RabbitTemplate.Re
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
         String id = correlationData.getId() != null ? correlationData.getId() : "";
+        System.out.println("order confirm.......");
+        if (ack && correlationData != null) {
+            System.out.println("delete from database....");
+            transMessageService.messageSendSuccess(id);     //移除暂存的消息落库数据
+        }
         if (!ack) {
             log.warn("{}交换机接收ID为{}的消息失败，原因：{}", correlationData.getReturned().getExchange(), id, cause);
         }
